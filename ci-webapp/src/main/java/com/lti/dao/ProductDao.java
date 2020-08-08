@@ -1,6 +1,7 @@
 package com.lti.dao;
 
 import java.io.IOException;
+//import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,12 +17,12 @@ import com.lti.entity.Product;
 //referred to as Data Access Objects
 public class ProductDao {
 
-	public Product select(int id) throws IOException {
+	public Product select(int id)  {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			conn=ConnManager.connect();
+			conn= ConnManager.connect();
 		
 		
 			String sql = "SELECT * FROM tbl_product WHERE id = ?";
@@ -39,7 +40,7 @@ public class ProductDao {
 		}
 		//very bad should throw an exception indicating some problem which trying to fetch data
 
-		catch(SQLException e) {
+		catch(SQLException | IOException e) {
 			e.printStackTrace(); //we should rather throw an user defined exception
 			return null;
 		

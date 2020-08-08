@@ -18,7 +18,7 @@ public class ConnManager {
 			return DriverManager.getConnection(dbProps.getProperty("url"),dbProps.getProperty("user"),dbProps.getProperty("pass"));
 		}
 		
-			catch(ClassNotFoundException | SQLException e) {
+			catch( SQLException | ClassNotFoundException e) {
 				e.printStackTrace(); //we should rather throw an user defined exception
 				return null;
 			
